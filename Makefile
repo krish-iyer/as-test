@@ -1,8 +1,11 @@
+# Makefile
 all: mul
-
-first: mul.o
-	gcc -o $@ $+
+ 
+mul: mul.o
+	arm-linux-gnueabihf-gcc -o $@ $+
+ 
 mul.o : mul.s
-	as -o $@ $<
-clean: 
+	arm-linux-gnueabihf-as -mfpu=neon -o $@ $<
+ 
+clean:
 	rm -vf mul *.o
